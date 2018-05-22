@@ -14,3 +14,5 @@ RUN wget https://pypi.python.org/packages/d4/0c/9840c08189e030873387a73b90ada981
 RUN python virtualenv-15.1.0/virtualenv.py /work/nagare-0.4.1 && /work/nagare-0.4.1/bin/easy_install 'nagare[full]' && \
 		echo "export PATH=$PATH:/work/nagare-0.4.1/bin" >> /etc/profile
 RUN /work/nagare-0.4.1/bin/easy_install kansha
+
+CMD /work/nagare-0.4.1/bin/nagare-admin serve admin
