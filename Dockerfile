@@ -14,6 +14,7 @@ RUN wget https://pypi.python.org/packages/d4/0c/9840c08189e030873387a73b90ada981
 RUN python virtualenv-15.1.0/virtualenv.py /work/nagare-0.4.1 && /work/nagare-0.4.1/bin/easy_install 'nagare[full]' && \
 		echo "export PATH=$PATH:/work/nagare-0.4.1/bin" >> /etc/profile
 RUN /work/nagare-0.4.1/bin/easy_install kansha
-RUN nagare-admin create-db kansha && kansha-admin alembic-stamp head && kansha-admin create-demo && kansha-admin create-index
+RUN /work/nagare-0.4.1/bin/nagare-admin create-db kansha && /work/nagare-0.4.1/bin/kansha-admin alembic-stamp head && \
+		/work/nagare-0.4.1/bin/kansha-admin create-demo && /work/nagare-0.4.1/bin/kansha-admin create-index
 
 CMD /work/nagare-0.4.1/bin/nagare-admin serve kansha
